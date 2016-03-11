@@ -4,7 +4,10 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/client')); // comment
+
+app.use(express.static(__dirname + '/client'));
+app.use(express.static(__dirname + '/server'));
+app.use(express.static(__dirname + '/node_modules/angular/'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');

@@ -7,7 +7,7 @@ app.service('myService', function ($http) {
   this.getGreeting = function($scope) {
     var greeting;
 
-    $http.get('/server/greeting.json')
+    $http.get('/greeting.json')
       .success(function (data) {
           $scope.greeting = data.greeting;
       });
