@@ -4,7 +4,11 @@
   <title></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -13,7 +17,79 @@
   <div ng-controller="mainCtrl">
     <h2>{{greeting}}</h2>
   </div>
-  
+
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+      <!-- Card -->
+      <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Basic</h2>
+        </div>
+
+        <div class="mdl-card__supporting-text">
+          <ul class="demo-list-icon mdl-list">
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                1 person
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                double bed
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                kitchen
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                shower
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                suspend
+              </span>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">person</i>
+                wi-fi
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Count Rooms
+          </a>
+        </div>
+        <div class="mdl-card__menu">
+          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+          </button>
+        </div>
+      </div>
+      <!-- end Card -->
+    </div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+  </div>
+
+
+
+  <div class="search-button">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Search </button>
+  </div>
 
 	<!-- scripts -->
 	<script src="angular.js"></script>

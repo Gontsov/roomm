@@ -1,0 +1,13 @@
+
+/* for card */
+.roommade-card-wide.mdl-card {
+  width: 300px;
+}
+.roommade-card-wide > .mdl-card__title {
+  color: #fff;
+  background-color: rgb(255,64,129) !important;
+  background: url('../assets/demos/welcome_card.jpg') center / cover;
+}
+.roommade-card-wide > .mdl-card__menu {
+  color: #fff;
+}
