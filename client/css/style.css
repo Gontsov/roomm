@@ -1,7 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* header */
+header {
+  position: relative;
+  display: flex;
+  height: 400px;
+  background-image: url('https://d38pxtc7jddmir.cloudfront.net/5252525252/125557/202/36/1/original.jpg?rnd=0.15526616922579706');
+  background-position: center center;
+  background-size: cover;
+}
+header:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5)
+}
+.location-enter {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.location-enter h2 {
+  color: #fff;
+  font-size: 28px;
+  margin: 0;
+}
+.location-enter input {
+  color: #fff;
+  border-color: #fff;
+  text-align: center;
+  /*border-color: rgba(255, 255, 255, 0.6);*/
+}
+
+
 
 /* for card */
 .roommade-card-wide.mdl-card {
-  width: 300px;
+  width: 100%;
 }
 .roommade-card-wide > .mdl-card__title {
   color: #fff;
@@ -10,4 +54,127 @@
 }
 .roommade-card-wide > .mdl-card__menu {
   color: #fff;
+}
+
+
+
+.location-enter {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.mdl-card__menu .material-icons {
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  font-size: 30px;
+}
+
+
+
+/* cards template */
+.search-templates .mdl-cell {
+  display: flex;
+}
+.search-templates .mdl-cell > div{
+  display: flex;
+  flex: 1; 
+}
+.roommade-card-create-template {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+.roommade-card-create-template .mdl-button--fab {
+  border-radius: 50%;
+  font-size: 48px;
+  height: 111px;
+  margin: auto;
+  min-width: 56px;
+  width: 111px;
+}
+.roommade-card-create-template .mdl-button--fab .material-icons {
+  -webkit-transform: translate(-12px,-12px);
+  transform: translate(-24px,-24px);
+  line-height: 48px;
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+}
+
+/* search */
+.search-button {
+  text-align: center;
+  padding: 32px 0;
+
+}
+.search-button button {
+  height: 52px;
+  padding: 0 48px;
+  border-radius: 12px;
+}
+
+
+/* search-result */
+.results {
+  background-color: rgba(0,0,0,.05);
+}
+.results .roommade-card {
+  background-color: #fff;
+}
+.search-result-list {
+  padding: 30px 15px;
+}
+.search-result-list > div {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+
+/* list card */
+.roommade-card {
+  position: relative;
+  overflow: hidden;
+}
+.roommade-card-img {
+  float: left;
+  width: 222px;
+  height: 100%;
+}
+.roommade-card-img p {
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+}
+.roommade-card-body {
+  float: right;
+  width: calc(100% - 222px);
+}
+.roommade-card-body .mdl-card__menu i {
+  background-color: rgb(255,64,129)
+}
+.hotel-rating {
+  margin-left: 15px;
+}
+.mdl-progress {
+  width: 150px;
+}
+
+
+
+
+/* util */
+.style--pink {
+  color: #fff;
+  background-color: rgb(255,64,129)
+}
+
+.input-style--pink:after {
+  background-color: rgb(255,64,129)
+}
+.tab-style--pink a:after {
+  background: rgb(255,64,129) !important;
 }

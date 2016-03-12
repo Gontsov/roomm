@@ -14,82 +14,299 @@
   <![endif]-->
 </head>
 <body>
-  <div ng-controller="mainCtrl">
-    <h2>{{greeting}}</h2>
-  </div>
 
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col">
-      <!-- Card -->
-      <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+  <!-- header -->
+    <header>
+      <!-- Location -->
+      <div class="location-enter">
+        <form action="#">
+          <h2>Location</h2>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1">
+            <label class="mdl-textfield__label input-style--pink" for="sample1"></label>
+          </div>
+        </form>
+      </div> 
+    </header>
+  <!-- end header -->
 
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text">Basic</h2>
+  <!-- body -->
+
+    
+
+    <!-- templates -->
+    <div class="mdl-grid search-templates">
+      <div class="mdl-cell mdl-cell--4-col">
+        <!-- Card 1 -->
+          <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Basic</h2>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+              <ul class="demo-list-icon mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    1 person
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    double bed
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    kitchen
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    shower
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    suspend
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    wi-fi
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Count Rooms
+              </a>
+            </div>
+            <div class="mdl-card__menu">
+              <i class="material-icons mdl-list__item-icon">bookmark</i>
+            </div>
+          </div>
+        <!-- end Card 1 -->
+      </div>
+      <div class="mdl-cell mdl-cell--4-col">
+        <!-- Card 2 -->
+          <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Family</h2>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+              <ul class="demo-list-icon mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    1 person
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    double bed
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    kitchen
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    shower
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    suspend
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-icon">person</i>
+                    wi-fi
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Count Rooms
+              </a>
+            </div>
+            <div class="mdl-card__menu">
+              <i class="material-icons mdl-list__item-icon">bookmark</i>
+            </div>
+          </div>
+        <!-- end Card 2 -->
+      </div>
+      <div class="mdl-cell mdl-cell--4-col">
+        <!-- Card 3 -->
+          <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Create template</h2>
+            </div>
+
+            <div class="mdl-card__supporting-text roommade-card-create-template">
+              <!-- Colored FAB button with ripple -->
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">add</i>
+              </button>
+            </div>
+
+          </div>
+        <!-- end Card 3 -->
+      </div>
+    </div>
+
+    <!-- Search button -->
+    <div class="search-button">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Search</button>
+    </div>
+
+
+    <!-- Tabs -->
+    <div class="results">
+    
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect tab-style--pink">
+        <div class="mdl-tabs__tab-bar tab-style--pink">
+            <a href="#search-result-panel" class="mdl-tabs__tab is-active">Result</a>
+            <a href="#map-panel" class="mdl-tabs__tab">Map</a>
         </div>
 
-        <div class="mdl-card__supporting-text">
-          <ul class="demo-list-icon mdl-list">
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                1 person
-              </span>
-            </li>
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                double bed
-              </span>
-            </li>
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                kitchen
-              </span>
-            </li>
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                shower
-              </span>
-            </li>
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                suspend
-              </span>
-            </li>
-            <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">person</i>
-                wi-fi
-              </span>
-            </li>
-          </ul>
+        <div class="mdl-tabs__panel is-active" id="search-result-panel">
+          <div class="search-result-list">
+            
+
+
+
+
+
+            <!-- result card -->
+            <div class="roommade-card mdl-shadow--2dp">
+
+              <div class="roommade-card-img">
+                <p style="background-image: url(http://dreamatico.com/data_images/hotels/hotels-4.jpg)"></p>
+              </div>
+
+              <div class="roommade-card-body">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Hotel</h2>
+
+                  <!-- hotel rating -->
+                  <div class="hotel-rating">
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </div>
+                </div>
+
+                <div class="mdl-card__supporting-text">
+                  <table>
+                    <tr>
+                      <td>
+                        Basic
+                      </td>
+                      <td>
+                        <div id="p1" class="mdl-progress mdl-js-progress"></div>
+                        <script>
+                          document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+                            this.MaterialProgress.setProgress(80);
+                          });
+                        </script>
+                      </td>
+                      <td>4 rooms</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        Family
+                      </td>
+                      <td>
+                        <div id="p2" class="mdl-progress mdl-js-progress"></div>
+                        <script>
+                          document.querySelector('#p2').addEventListener('mdl-componentupgraded', function() {
+                            this.MaterialProgress.setProgress(40);
+                          });
+                        </script>
+                      </td>
+                      <td>5 rooms</td>
+                    </tr>
+                  </table>
+                  <div>
+                    <!-- Simple MDL Progress Bar -->
+                    
+                  </div>
+                  <div>
+                    <!-- Simple MDL Progress Bar -->
+                    
+                  </div>
+                </div>
+
+                <div class="mdl-card__actions mdl-card--border">
+                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Get Started
+                  </a>
+                </div>
+
+                <div class="mdl-card__menu">
+                  <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                  </button>
+                </div>
+              </div>
+              
+
+
+            </div>
+            <!-- end result card -->
+
+
+
+          </div>
         </div>
 
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Count Rooms
-          </a>
-        </div>
-        <div class="mdl-card__menu">
-          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-          </button>
+        <div class="mdl-tabs__panel" id="map-panel">
+          <p>Map tab</p>
         </div>
       </div>
-      <!-- end Card -->
+
     </div>
-    <div class="mdl-cell mdl-cell--4-col"></div>
-    <div class="mdl-cell mdl-cell--4-col"></div>
+
+
+  <!-- end body -->
+
+
+
+
+  <div ng-controller="mainCtrl">
+    <!-- <h2>{{greeting}}</h2> -->
   </div>
 
 
 
-  <div class="search-button">
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Search </button>
-  </div>
+
+
+
 
 	<!-- scripts -->
 	<script src="angular.js"></script>
