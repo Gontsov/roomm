@@ -1,4 +1,7 @@
 var express = require('express');
+
+var HLAPI = require('./server/server');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -15,6 +18,18 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index');
+});
+
+app.get('/restOld', function(request, response) {
+  
+  //response.render('pages/index');
+  HLAPI.getHotels(request, response);
+});
+
+app.get('/rest', function(request, response) {
+  
+  //response.render('pages/index');
+  HLAPI.restCall(request, response);
 });
 
 app.listen(app.get('port'), function() {

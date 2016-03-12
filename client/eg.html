@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app="RoomMade">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <!-- header -->
+    <header>
+      <!-- Location -->
+      <!-- <div class="location-enter">
+        <form action="#">
+          <h2>Test page</h2>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1">
+            <label class="mdl-textfield__label input-style--pink" for="sample1"></label>
+          </div>
+        </form>
+      </div>  -->
+    </header>
+  <!-- end header -->
+
+  <!-- body -->
+
+  
+  <div ng-controller="mainCtrl">
+    <!-- <h2>{{greeting}}</h2> -->
+
+    <button ng-click="getHotels();">search</button>
+    <button ng-click="getHotelInfo('333531');">hotelInfo</button>
+
+    <div>
+      <table id="hotels">
+
+          <tr>
+            <th>
+              id
+            </th>
+            <th>
+              name
+            </th>
+            <th>
+            </th>
+          </tr>
+          <tr ng-repeat="(i, hotel) in data.hotels">
+            <td>
+              {{hotel.id}}
+            </td>
+            <td>
+              {{hotel.name}}
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- end body -->
+
+	<!-- scripts -->
+	<script src="angular.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
