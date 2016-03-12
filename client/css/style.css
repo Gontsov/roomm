@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
+header, body, html {
+  height: 100%;
+}
 body {
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -8,8 +11,8 @@ body {
 header {
   position: relative;
   display: flex;
-  height: 400px;
-  background-image: url('https://d38pxtc7jddmir.cloudfront.net/5252525252/125557/202/36/1/original.jpg?rnd=0.15526616922579706');
+  /*height: 400px;*/
+  background-image: url('https://i.ytimg.com/vi/zhFo7E-2hCk/maxresdefault.jpg');
   background-position: center center;
   background-size: cover;
 }
@@ -20,7 +23,14 @@ header:before {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,.5)
+  background: rgba(0,0,0,.7)
+}
+header form > p {
+  color: #fff;
+  width: 700px;
+  left: 20px;
+  position: relative;
+  padding-top: 30px;
 }
 .location-enter {
   position: relative;
@@ -31,14 +41,35 @@ header:before {
 }
 .location-enter h2 {
   color: #fff;
-  font-size: 28px;
+  font-size: 36px;
   margin: 0;
+  position: relative;
+  left: 14px;
 }
 .location-enter input {
   color: #fff;
   border-color: #fff;
   text-align: center;
   /*border-color: rgba(255, 255, 255, 0.6);*/
+}
+header .mdl-textfield__label:after {
+  background-color: #fff
+}
+
+header .mdl-button--icon {
+  height: 64px;
+  width: 64px;
+}
+header .mdl-button--icon .material-icons {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  font-size: 64px;
+  transform: translate(-32px,-32px);
+  color: #fff;
+} 
+header .mdl-textfield__input {
+  font-size: 64px;
 }
 
 
@@ -49,11 +80,17 @@ header:before {
 }
 .roommade-card-wide > .mdl-card__title {
   color: #fff;
-  background-color: rgb(255,64,129) !important;
+  background-color: #1D9E74 !important;
   background: url('../assets/demos/welcome_card.jpg') center / cover;
 }
 .roommade-card-wide > .mdl-card__menu {
   color: #fff;
+}
+
+.mdl-card__actions i {
+  position: absolute;
+  right: 0;
+  top: 20px;
 }
 
 
@@ -73,8 +110,19 @@ header:before {
 
 
 /* cards template */
+.search-templates {
+  background: #EFEFEF
+}
+.search-templates > p{
+  text-align: center;
+  padding: 60px 0 44px;
+  font-size: 40px;
+  color: #555;
+  margin: 0;
+}
 .search-templates .mdl-cell {
   display: flex;
+  width: 300px;
 }
 .search-templates .mdl-cell > div{
   display: flex;
@@ -103,6 +151,27 @@ header:before {
   height: 48px;
   font-size: 48px;
 }
+.search-templates .mdl-card__actions {
+  padding-top: 20px;
+  background: rgba(96, 125, 139, 0.1);
+}
+.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-upgraded.is-focused .mdl-textfield__label {
+  color: #555;
+}
+.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-upgraded .mdl-textfield__label:after {
+  background-color: #555;
+}
+
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+  color: #1D9E74;
+}
+
+
+
+
+
+
+
 
 /* search */
 .search-button {
@@ -117,9 +186,25 @@ header:before {
 }
 
 
+
+
+
+
+
+
+
+
 /* search-result */
 .results {
+  min-height: 200px;
+  height: 100%;
   background-color: rgba(0,0,0,.05);
+}
+.results .mdl-tabs__tab {
+  width: 50%;
+}
+.results .mdl-tabs__tab .mdl-tabs__ripple-container .mdl-ripple {
+  background-color: #60C3A3;
 }
 .results .roommade-card {
   background-color: #fff;
@@ -132,6 +217,14 @@ header:before {
   height: 200px;
   margin-bottom: 15px;
 }
+
+
+
+
+
+
+
+
 
 
 /* list card */
@@ -154,7 +247,7 @@ header:before {
   width: calc(100% - 222px);
 }
 .roommade-card-body .mdl-card__menu i {
-  background-color: rgb(255,64,129)
+  color: rgb(255,64,129)
 }
 .hotel-rating {
   margin-left: 15px;
@@ -166,15 +259,46 @@ header:before {
 
 
 
+
+
+
+
+
+
+
 /* util */
-.style--pink {
-  color: #fff;
-  background-color: rgb(255,64,129)
+.tab-style--pink a:after {
+  background: #1D9E74 !important;
+}
+.mdl-button--fab.mdl-button--colored.c--green,
+.mdl-button--accent.mdl-button--accent.mdl-button--raised.c--green {
+  background-color: #1D9E74;
+}
+.mdl-button--fab.mdl-button--colored.c--green:hover,
+.mdl-button--accent.mdl-button--accent.mdl-button--raised.c--green:hover {
+  background-color: #60C3A3;
 }
 
-.input-style--pink:after {
-  background-color: rgb(255,64,129)
-}
-.tab-style--pink a:after {
-  background: rgb(255,64,129) !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
