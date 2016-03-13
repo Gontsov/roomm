@@ -408,6 +408,9 @@ header .mdl-textfield__input {
   color: #555;
 }
 
+.js-loader-results {
+  text-align: center;
+}
 
 
 

@@ -129,9 +129,9 @@
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent c--green" ng-click="search();">Search</button>
       </div>
 
-      <div class="c-hidden c-request-progress search-button">
+<!--       <div class="c-hidden c-request-progress search-button">
           Searching...
-      </div>
+      </div> -->
 
     </div>
 
@@ -173,7 +173,7 @@
                   </div>
 
                   <!-- button -->
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Booking </button>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="goToBooking(hotel.Room.fullBookingURL)"> Book now </button>
                 </div>
 
                 <div class="mdl-card__supporting-text">
@@ -183,10 +183,10 @@
                         Relevation
                       </td>
                       <td>
-                        <div id="p{{$index}}" class="mdl-progress mdl-js-progress"></div>
-                        {{ setRelevation('#p'+$index, result.relevation) }}
+                        <div id="p{{hotel.id}}" class="mdl-progress mdl-js-progress"></div>
+                        <!-- {{ setRelevation('#p'+ hotel.id, 30 ) }} --> <!-- getRelevation( getSelectedTemplate().options, hotel.amenities ) -->
                       </td>
-                      <td>{{result.relevation}}%</td>
+                      <td>{{ getRelevation( getSelectedTemplate().options, hotel ) }}%</td>
                     </tr>
                   </table>
                   <div>
@@ -220,6 +220,11 @@
                     </li>
                     <li class="mdl-list__item ng-scope">
                       <span class="mdl-list__item-primary-content ng-binding">
+                        Distance from City center: {{hotel.distance}} km.
+                      </span>
+                    </li>
+                    <li class="mdl-list__item ng-scope">
+                      <span class="mdl-list__item-primary-content ng-binding">
                         Stay price: ${{hotel.minPriceTotal}}
                       </span>
                     </li>
@@ -231,6 +236,11 @@
             </div>
             </div>
             <!-- end result card -->
+          </div>
+
+          <!-- MDL Spinner Component -->
+          <div class="js-loader-results c-hidden">
+            <div class="mdl-spinner mdl-js-spinner is-active"></div>
           </div>
         </div>
         

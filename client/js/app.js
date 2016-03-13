@@ -32,7 +32,7 @@ app.service('rmService', function ($http) {
 	};
 });
 
-app.controller('mainCtrl', function ($scope, rmService) {
+app.controller('mainCtrl', function ($scope, rmService, $window) {
 
 	////////////////
 
@@ -95,6 +95,9 @@ app.controller('mainCtrl', function ($scope, rmService) {
 
 	$scope.search = function() {
 		console.log('search');
+		
+		$scope.data.hotels = [];
+		$scope.data.hotelInfo = {};
 
 		$scope.getHotels();
 
@@ -198,11 +201,13 @@ app.controller('mainCtrl', function ($scope, rmService) {
 	}
 
 	$scope.showLoadingProgress = function(){
-		jQuery('.c-request-progress').removeClass('c-hidden');
+		// jQuery('.c-request-progress').removeClass('c-hidden');
+		jQuery('.js-loader-results').removeClass('c-hidden');
 	}
 
 	$scope.hideLoadingProgress = function(){
-		jQuery('.c-request-progress').addClass('c-hidden');
+		// jQuery('.c-request-progress').addClass('c-hidden');
+		jQuery('.js-loader-results').addClass('c-hidden');
 	}
 
 	$scope.restApiHotelLook = function(params, callback, callback2) {
@@ -385,6 +390,17 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		return valid;
 	}
 
+	$scope.compareOptionRel = function (id, arr) {
+		var valid = false;
+		for (var i = 0; i < arr.length; i++){
+			if( arr[i].id === id ) {
+				valid = true;
+				break;
+			}
+		}
+		return valid;
+	}
+
 	$scope.getSelectedTemplate = function () {
 		var template;
 		for(var i = 0; i < $scope.templates.length; i++) {
@@ -392,8 +408,45 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		}
 		return template;
 	}
+
 	$scope.getStars = function(num) {
 	    return new Array(num);   
+	}
+
+	$scope.goToBooking = function(link) {
+		$window.open(link);
+	}
+
+	$scope.getRelevation = function(templateOptions, hotel) {
+		var percent = 0;
+		var matches = 0;
+
+		if(!hotel.amenities) {
+			return 0;
+		}
+		console.log('templateOptions', templateOptions);
+		console.log('hotelAmenities', hotel.amenities);
+
+		for (var i = 0; i < hotel.amenities.length; i++) {
+			if ( $scope.compareOptionRel(hotel.amenities[i], templateOptions) ) {
+				matches++;
+			}
+		};
+
+		percent = matches / templateOptions.length * 100;
+
+		$scope.setRelevation('#p'+ hotel.id, percent );
+		
+		return percent;
+	}
+
+	$scope.setRelevation = function(el, percent) {
+		console.log('percent', percent);
+		console.log('el', el);
+		console.log( document.querySelector(el) )
+		document.querySelector(el).addEventListener('mdl-componentupgraded', function() {
+			this.MaterialProgress.setProgress(percent);
+		});
 	}
 });
 
