@@ -274,6 +274,7 @@ header .mdl-textfield__input {
 }
 .results .mdl-tabs__tab {
   width: 50%;
+  font-size: 24px;
 }
 .results .mdl-tabs__tab .mdl-tabs__ripple-container .mdl-ripple {
   background-color: #60C3A3;
@@ -286,7 +287,7 @@ header .mdl-textfield__input {
 }
 .search-result-list > div {
   width: 100%;
-  height: 200px;
+  height: 300px;
   margin-bottom: 15px;
 }
 
@@ -306,7 +307,7 @@ header .mdl-textfield__input {
 }
 .roommade-card-img {
   float: left;
-  width: 222px;
+  width: 300px;
   height: 100%;
 }
 .roommade-card-img p {
@@ -316,7 +317,16 @@ header .mdl-textfield__input {
 }
 .roommade-card-body {
   float: right;
-  width: calc(100% - 222px);
+  width: calc(100% - 300px);
+}
+.roommade-card-body .mdl-card__supporting-text {
+  padding-top: 0;
+}
+.roommade-card-body .mdl-card__supporting-text td {
+  font-size: 16px
+}
+.roommade-card-body .mdl-progress>.progressbar {
+  background-color: rgb(29, 158, 116);
 }
 .roommade-card-body .mdl-card__menu i {
   color: rgb(255,64,129)
@@ -328,11 +338,96 @@ header .mdl-textfield__input {
   width: 150px;
 }
 
+/* left list */
+.list-options {
+  width: 50%;
+  float: left;
+}
+.list-options .mdl-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.list-options .mdl-list__item {
+  width: 50%;
+  float: left;
+  padding: 0;
+  padding-left: 8px;
+  min-height: auto;
+}
+.list-options .mdl-list__item .mdl-list__item-primary-content .mdl-list__item-icon {
+  margin-right: 4px;
+  color: green;
+}
+/* right list */
+.rating-list {
+  width: calc(50% - 20%);
+  float: right;
+  padding: 0 10%;
+}
+.rating-list .mdl-list {
+  
+  overflow: hidden;
+  margin: 0;
+
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+.rating-list .mdl-list__item {
+  padding: 0;
+  margin: 0;
+  min-height: auto;
+
+  padding: 8px;
+}
+.rating-list .mdl-list__item-primary-content {
+  justify-content: center;
+}
 
 
 
 
-
+/* popup */
+.create-template-popup {
+  z-index: 999;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.8);
+}
+.create-template-popup > div {
+  position: absolute;
+  width: 60%;
+  left: 50%;
+  margin-left: -30%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: #fff;
+  height: 590px;
+  top: 50%;
+  margin-top: -295px;
+}
+.create-template-popup > div > p {
+  margin: 0;
+  text-align: center;
+  font-size: 28px;
+  padding: 24px 0;
+  color: #555;
+  border-bottom: 1px solid #1D9E74;
+}
+.create-template-buttons {
+  border-top: 1px solid #1D9E74;
+  padding: 24px 0;
+  text-align: center;
+}
+.create-template-buttons button {
+  border-radius: 12px;
+  height: 56px;
+  padding: 0 56px;
+}
 
 
 
