@@ -362,7 +362,9 @@ app.controller('mainCtrl', function ($scope, rmService) {
 						hotelInfo.AvaTotal = availableCountTotal;
 					}
 
-					$scope.data.hotelInfo[hotelInfo.id] = hotelInfo;
+					if (hotelInfo.AvaTotal > 0){
+						$scope.data.hotelInfo[hotelInfo.id] = hotelInfo;
+					}
 				}
 			}
 		}, callback);
