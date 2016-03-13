@@ -61,6 +61,10 @@ app.controller('templateCtrl', function ($scope) {
 
 	$scope.search = function() {
 		console.log('send data');
+
+		$('html,body').animate({
+          scrollTop: $('.results').offset().top
+        }, 500);
 	}
 
 	$scope.datepick = function() {

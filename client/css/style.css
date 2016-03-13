@@ -331,6 +331,9 @@ header .mdl-textfield__input {
   float: right;
   width: calc(100% - 300px);
 }
+.roommade-card-body .mdl-card__title button {
+  margin-left: 20px;
+}
 .roommade-card-body .mdl-card__supporting-text {
   padding-top: 0;
 }
