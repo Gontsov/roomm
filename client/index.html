@@ -40,21 +40,21 @@
   <!-- body -->
 
     <!-- templates -->
-    <div class="search-templates">
+    <div class="search-templates" ng-controller="templateCtrl">
 
       <p>Select room template or create yours</p>
       
       <div>
-        <div class="mdl-grid" ng-controller="templateCtrl">
+        <div class="mdl-grid">
           <div class="mdl-cell" ng-repeat="template in templates">
             <!-- Card 1 -->
-              <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+              <div class="roommade-card-wide mdl-card mdl-shadow--2dp" ng-class="{ 'is-select': template.select }">
 
-                <div class="mdl-card__title">
+                <div class="mdl-card__title" ng-click="select(template)">
                   <h2 class="mdl-card__title-text">{{template.name}}</h2>
                 </div>
 
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" ng-click="select(template)">
                   <ul class="demo-list-icon mdl-list">
                     <li class="mdl-list__item" ng-repeat="option in template.options">
                       <span class="mdl-list__item-primary-content">
@@ -94,7 +94,7 @@
           </div>
 
           <div class="mdl-cell">
-              <div class="roommade-card-wide mdl-card mdl-shadow--2dp">
+              <div class="roommade-card-wide mdl-card mdl-shadow--2dp add-new-template">
 
                 <div class="mdl-card__title">
                   <h2 class="mdl-card__title-text">Create template</h2>
@@ -102,7 +102,7 @@
 
                 <div class="mdl-card__supporting-text roommade-card-create-template">
 
-                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored c--green js-create-template">
+                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored c--dark js-create-template">
                     <i class="material-icons">add</i>
                   </button>
                 </div>
@@ -114,7 +114,7 @@
 
       <!-- Search button -->
       <div class="search-button">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent c--green">Search</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent c--green" ng-click="search()">Search</button>
       </div>
 
     </div>
@@ -288,6 +288,18 @@
     });
     $('.js-save-template').on('click', function () {
       $('.js-create-template-popup').hide();
+    });
+
+    $('.mdl-textfield__input').on('press', function() {
+      console.log(111111);
+    })
+    $(".mdl-textfield__input").keydown(function(e) {
+      if (e.keyCode === 13) {
+        console.log('scroll')
+        $('html,body').animate({
+          scrollTop: $('.search-templates').offset().top
+        }, 500);
+      }
     });
     
   </script>

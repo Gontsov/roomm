@@ -80,8 +80,11 @@ header .mdl-textfield__input {
 }
 .roommade-card-wide > .mdl-card__title {
   color: #fff;
-  background-color: #1D9E74 !important;
+  background-color: #3E4E49 !important;
   background: url('../assets/demos/welcome_card.jpg') center / cover;
+}
+.roommade-card-wide.is-select > .mdl-card__title {
+  background-color: #1D9E74 !important;
 }
 .roommade-card-wide > .mdl-card__menu {
   color: #fff;
@@ -204,8 +207,11 @@ header .mdl-textfield__input {
   margin-right: 24px;
 }
 .room-number {
-  background: #1D9E74;
+  background-color: #3E4E49;
   margin-top: 40px;
+}
+.is-select .room-number {
+  background: #1D9E74;
 }
 .room-number .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label {
   margin: 0 auto;
@@ -233,7 +239,13 @@ header .mdl-textfield__input {
   background-color: #fff;
 }
 
-
+.add-new-template {
+  opacity: .3;
+  transition: opacity .2s ease-out;
+}
+.add-new-template:hover {
+  opacity: 1;
+}
 
 
 
@@ -434,16 +446,25 @@ header .mdl-textfield__input {
 
 
 /* util */
-.tab-style--pink a:after {
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
   background: #1D9E74 !important;
 }
 .mdl-button--fab.mdl-button--colored.c--green,
 .mdl-button--accent.mdl-button--accent.mdl-button--raised.c--green {
   background-color: #1D9E74;
 }
+.mdl-button--fab.mdl-button--colored.c--dark,
+.mdl-button--accent.mdl-button--accent.mdl-button--raised.c--dark {
+  background-color: #3E4E49;
+}
+
 .mdl-button--fab.mdl-button--colored.c--green:hover,
 .mdl-button--accent.mdl-button--accent.mdl-button--raised.c--green:hover {
   background-color: #60C3A3;
+}
+.mdl-button--fab.mdl-button--colored.c--dark:hover,
+.mdl-button--accent.mdl-button--accent.mdl-button--raised.c--dark:hover {
+  background-color: #3E4E49;
 }
 
 
