@@ -66,6 +66,34 @@
       </table>
     </div>
 
+    <div>
+      <table id="hotels">
+
+          <tr>
+            <th>
+              id
+            </th>
+            <th>
+              name
+            </th>
+            <th>
+              photos
+            </th>
+          </tr>
+          <tr ng-repeat="hotel in data.hotelInfo">
+            <td>
+              {{hotel.id}}
+            </td>
+            <td>
+              {{hotel.name}}
+            </td>
+            <td>
+              {{hotel.photoCount}}
+            </td>
+          </tr>
+      </table>
+    </div>
+
   </div>
 
   <!-- end body -->
