@@ -351,6 +351,24 @@ app.controller('mainCtrl', function ($scope, rmService) {
 	}
 
 	$scope.init();
+
+	// $scope.data.hotelInfo = [
+	// 	{
+	// 		name: 'Hotel name',
+	// 		rooms: [
+	// 			{
+	// 				desc: 'Room desc',
+	// 				options: {
+	// 					"option room 1": true,
+	// 					"option room 2": false,
+	// 				}
+	// 			}
+	// 		]
+
+	// 	}
+	// ]
+	// data.hotelInfo = [] -> { rooms = [] } -> { desc = '' }
+
 });
 
 app.controller('templateCtrl', function ($scope) {

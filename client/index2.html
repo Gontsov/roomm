@@ -13,7 +13,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<body>
+<body ng-controller="mainCtrl">
 <!-- <h1>index2</h1> -->
 
   <!-- header -->
@@ -41,7 +41,7 @@
   <!-- body -->
 
     <!-- templates -->
-    <div ng-controller="mainCtrl">
+    <!-- <div ng-controller="mainCtrl"> -->
     <div class="search-templates">
 
       <p>Select room template or create yours</p>
@@ -152,10 +152,10 @@
           
           <div class="search-result-list">
 
-<!--             <div class="roommade-card-img">
+            <!-- <div class="roommade-card-img">
               <p style="background-image: url(http://cdn.photo.hotellook.com/image_v2/crop/h715674_1/340/300.jpg)"></p>
-            </div>
- -->
+            </div> -->
+
             <!-- result card -->
             <div class="" ng-repeat="hotel in data.hotelInfo">
             <div class="roommade-card mdl-shadow--2dp" ng-repeat="room in hotel.rooms">
@@ -200,12 +200,12 @@
                 </div>
 
                 <div class="list-options">
-                  
                   <ul class="mdl-list">
-                    <li class="mdl-list__item ng-scope" ng-repeat="option in result.listOptions">
+                    <li class="mdl-list__item ng-scope" ng-repeat="(key, value) in room.options">
                       <span class="mdl-list__item-primary-content ng-binding">
-                        <i class="material-icons mdl-list__item-icon">done</i>
-                        {{option}}
+                        <i class="material-icons mdl-list__item-icon" ng-if="value">done</i>
+                        <i class="material-icons mdl-list__item-icon is-icon-false" ng-if="!value">block</i>
+                        {{key}}
                       </span>
                     </li>
                   </ul>
@@ -236,7 +236,7 @@
       </div>
   
     </div>
-    </div>
+    <!-- </div> -->
 
 
   <!-- end body -->
