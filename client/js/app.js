@@ -230,7 +230,8 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		
 		//params.query = "55.728751,37.643944";
 
-		params.query = "55.777688,37.586643";
+		//params.query = "55.777688,37.586643";
+		params.query = "moscow";
 		params.lang = "ru";
 		params.lookFor = "hotel";
 		params.limit = "10";
@@ -343,6 +344,22 @@ app.controller('mainCtrl', function ($scope, rmService) {
 							var aItem = hotelInfo.amenities[a];
 							hotelInfo.amenitiesInfo[aItem] = $scope.searchAmenityName(aItem);
 						}
+					}
+
+					hotelInfo.Room = {};
+					var availableCountTotal = 0;
+					if (hotelInfo.rooms && hotelInfo.rooms.length > 0){
+						var rTotal = hotelInfo.rooms.length;
+						for (var r = 0; r < rTotal; r++){
+							var room = hotelInfo.rooms[r];
+							if (room.options){
+								if (room.options.available){
+									availableCountTotal += room.options.available;
+								}
+							}
+						}
+						hotelInfo.Room = room;
+						hotelInfo.AvaTotal = availableCountTotal;
 					}
 
 					$scope.data.hotelInfo[hotelInfo.id] = hotelInfo;
