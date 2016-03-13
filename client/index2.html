@@ -28,7 +28,7 @@
               <i class="material-icons">search</i>
             </label>
             <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="sample6">
+              <input class="mdl-textfield__input" type="text" id="sample6" ng-model="location">
               <label class="mdl-textfield__label" for="sample-expandable"></label>
             </div>
           </div>
@@ -169,7 +169,7 @@
 
                   <!-- hotel rating -->
                   <div class="hotel-rating">
-                    <i class="material-icons" ng-repeat="star in result.stars">star</i>
+                    <i class="material-icons" ng-repeat="star in hotel.stars">star</i>
                   </div>
 
                   <!-- button -->
@@ -211,15 +211,25 @@
                   </ul>
                 </div>
 
-<!--                 <div class="rating-list">
+                <div class="rating-list">
                   <ul class="mdl-list">
-                    <li class="mdl-list__item ng-scope" ng-repeat="amenitiy in hotel.amenitiesInfo">
+<!--                     <li class="mdl-list__item ng-scope" ng-repeat="amenitiy in hotel.amenitiesInfo">
                       <span class="mdl-list__item-primary-content ng-binding">
                         {{amenitiy.name}}
                       </span>
+                    </li> -->
+                    <li class="mdl-list__item ng-scope">
+                      <span class="mdl-list__item-primary-content ng-binding">
+                        Available rooms: {{ (room.option.available) ? room.option.available : 0 }}
+                      </span>
+                    </li>
+                    <li class="mdl-list__item ng-scope">
+                      <span class="mdl-list__item-primary-content ng-binding">
+                        Price: ${{room.price}}
+                      </span>
                     </li>
                   </ul>  
-                </div> -->
+                </div>
 
               </div>
 

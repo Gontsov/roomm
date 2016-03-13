@@ -230,7 +230,8 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		
 		//params.query = "55.728751,37.643944";
 
-		params.query = "55.777688,37.586643";
+		// params.query = "55.777688,37.586643";
+		params.query = $scope.location;
 		params.lang = "ru";
 		params.lookFor = "hotel";
 		params.limit = "10";
