@@ -1,0 +1,336 @@
+<!doctype html>
+<html ng-app="RoomMade">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- <h1>index2</h1> -->
+
+  <!-- header -->
+    <header>
+      <!-- Location -->
+      <div class="location-enter">
+
+        <form action="#" autocomplete="off">
+          <h2>Location</h2>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="sample6">
+              <label class="mdl-textfield__label" for="sample-expandable"></label>
+            </div>
+          </div>
+          <p>Enter city or a particular address to better determine location of hotels.</p>
+        </form>
+      </div> 
+    </header>
+  <!-- end header -->
+
+  <!-- body -->
+
+    <!-- templates -->
+    <div ng-controller="mainCtrl">
+    <div class="search-templates">
+
+      <p>Select room template or create yours</p>
+      
+      <div>
+        <div class="mdl-grid">
+          <div class="mdl-cell" ng-repeat="template in templates">
+            <!-- Card 1 -->
+              <div class="roommade-card-wide mdl-card mdl-shadow--2dp" ng-class="{ 'is-select': template.select }">
+
+                <div class="mdl-card__title" ng-click="select(template)">
+                  <h2 class="mdl-card__title-text">{{template.name}}</h2>
+                </div>
+
+                <div class="mdl-card__supporting-text" ng-click="select(template)">
+                  <ul class="demo-list-icon mdl-list">
+                    <li class="mdl-list__item" ng-repeat="option in template.options">
+                      <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">done</i>
+                        {{option.name}}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="mdl-card__actions mdl-card--border">
+                  <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input datepick" type="text" value="{{template.checkin}}">
+                      <label class="mdl-textfield__label" for="sample3">Check in</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input datepick" type="text" value="{{template.checkout}}">
+                      <label class="mdl-textfield__label" for="sample3">Check out</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" value="{{template.adult}}">
+                      <label class="mdl-textfield__label" for="sample3">Adult</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-if="template.child">
+                      <input class="mdl-textfield__input" type="text" value="{{template.child}}">
+                      <label class="mdl-textfield__label" for="sample3">Child</label>
+                    </div>
+
+                    <div class="room-number">
+                      <p>Number of rooms:</p>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" value="{{template.room}}">
+                        <label class="mdl-textfield__label" for="sample3"></label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="mdl-card__menu">
+                  <i class="material-icons mdl-list__item-icon">bookmark</i>
+                </div>
+              </div>
+            <!-- end Card 1 -->
+            {{datepick()}}
+          </div>
+
+          <div class="mdl-cell">
+              <div class="roommade-card-wide mdl-card mdl-shadow--2dp add-new-template">
+
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Create template</h2>
+                </div>
+
+                <div class="mdl-card__supporting-text roommade-card-create-template">
+
+                  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored c--dark js-create-template">
+                    <i class="material-icons">add</i>
+                  </button>
+                </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search button -->
+      <div class="search-button">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent c--green" ng-click="search();">Search</button>
+      </div>
+
+      <div class="c-hidden c-request-progress search-button">
+          Searching...
+      </div>
+
+    </div>
+
+    
+    <!-- Results -->
+    <div class="results">
+    
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect tab-style--pink">
+        
+        <!-- Tabs -->
+        <div class="mdl-tabs__tab-bar tab-style--pink">
+            <a href="#search-result-panel" class="mdl-tabs__tab is-active">Result</a>
+            <a href="#map-panel" class="mdl-tabs__tab">Map</a>
+        </div>
+        
+        <!-- Tab Search results -->
+        <div class="mdl-tabs__panel is-active" id="search-result-panel">
+          
+          <div class="search-result-list">
+
+<!--             <div class="roommade-card-img">
+              <p style="background-image: url(http://cdn.photo.hotellook.com/image_v2/crop/h715674_1/340/300.jpg)"></p>
+            </div>
+ -->
+            <!-- result card -->
+            <div class="" ng-repeat="hotel in data.hotelInfo">
+            <div class="roommade-card mdl-shadow--2dp" ng-repeat="room in hotel.rooms">
+
+              <div class="roommade-card-img" ng-style="{'background-image':'url(http://cdn.photo.hotellook.com/image_v2/crop/h' + hotel.id + '_1/340/300.jpg)'}"></div>
+
+              <div class="roommade-card-body">
+                <div class="mdl-card__title">
+                <!-- {{result.templateName}} -->
+                  <h2 class="mdl-card__title-text"> {{room.desc}} in {{hotel.name}}</h2>
+
+                  <!-- hotel rating -->
+                  <div class="hotel-rating">
+                    <i class="material-icons" ng-repeat="star in result.stars">star</i>
+                  </div>
+
+                  <!-- button -->
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Booking </button>
+                </div>
+
+                <div class="mdl-card__supporting-text">
+                  <table>
+                    <tr>
+                      <td>
+                        Relevation
+                      </td>
+                      <td>
+                        <div id="p{{$index}}" class="mdl-progress mdl-js-progress"></div>
+                        {{ setRelevation('#p'+$index, result.relevation) }}
+                      </td>
+                      <td>{{result.relevation}}%</td>
+                    </tr>
+                  </table>
+                  <div>
+                    <!-- Simple MDL Progress Bar -->
+                    
+                  </div>
+                  <div>
+                    <!-- Simple MDL Progress Bar -->
+                    
+                  </div>
+                </div>
+
+                <div class="list-options">
+                  
+                  <ul class="mdl-list">
+                    <li class="mdl-list__item ng-scope" ng-repeat="option in result.listOptions">
+                      <span class="mdl-list__item-primary-content ng-binding">
+                        <i class="material-icons mdl-list__item-icon">done</i>
+                        {{option}}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rating-list">
+                  <ul class="mdl-list">
+                    <li class="mdl-list__item ng-scope" ng-repeat="option in result.ratinglist">
+                      <span class="mdl-list__item-primary-content ng-binding">
+                        {{option}}
+                      </span>
+                    </li>
+                  </ul>  
+                </div>
+
+              </div>
+
+            </div>
+            </div>
+            <!-- end result card -->
+          </div>
+        </div>
+        
+        <!-- Tab Map -->
+        <div class="mdl-tabs__panel" id="map-panel">
+
+        </div>
+      </div>
+  
+    </div>
+    </div>
+
+
+  <!-- end body -->
+
+  <!-- popup -->
+  <div class="create-template-popup js-create-template-popup">
+    <div class="mdl-shadow--2dp">
+      <p>Select room template or create yours</p>
+
+      <div class="mdl-card__supporting-text">
+        <ul class="demo-list-icon mdl-list">
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              1 person
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              double bed
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              kitchen
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              shower
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              suspend
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+              <i class="material-icons mdl-list__item-icon">done</i>
+              wi-fi
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="create-template-buttons">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent c--green js-save-template">Create template</button>
+      </div>
+    </div>
+  </div>
+  <!-- end popup -->
+
+
+
+
+	<!-- scripts -->
+	<script src="angular.js"></script>
+  <script src="js/app.js"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <script>
+
+    $('.js-create-template').on('click', function () {
+      $('.js-create-template-popup').show();
+    });
+    $('.js-save-template').on('click', function () {
+      $('.js-create-template-popup').hide();
+    });
+
+    $('.mdl-textfield__input').on('press', function() {
+      console.log(111111);
+    })
+    $(".mdl-textfield__input").keydown(function(e) {
+      if (e.keyCode === 13) {
+        console.log('scroll')
+        $('html,body').animate({
+          scrollTop: $('.search-templates').offset().top
+        }, 500);
+      }
+    });
+    
+  </script>
+
+  <style>
+    .c-hidden {display: none !important;}
+  </style>
+  
+</body>
+</html>

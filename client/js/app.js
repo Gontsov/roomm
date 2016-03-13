@@ -21,7 +21,7 @@ app.service('rmService', function ($http) {
 		var conf = {};
 		conf.params = params;
 		$http.get('/rest', conf)
-			.success(function (data) {
+		.success(function (data) {
 				if (callback){
 					callback(data);
 				}
@@ -30,10 +30,158 @@ app.service('rmService', function ($http) {
 			}
 		);
 	};
-
 });
 
 app.controller('mainCtrl', function ($scope, rmService) {
+
+	////////////////
+
+	$scope.templates = [
+		{
+			name: 'Individual',
+			options: [
+				{id: 11, name: 'Air condition'},
+				{id: 4, name: 'TV'},
+				{id: 66, name: 'Refrigerator'},
+				{id: 133, name: 'Wi-fi in room'},
+				{id: 5, name: 'Telephone'},
+				{id: 7, name: 'Shower'},
+			],
+			checkin: '',
+			checkout: '',
+			adult: 2,
+			room: 0,
+			select: false
+		},
+		{
+			name: 'Family',
+			options: [
+				{id: 11, name: 'Air condition'},
+				{id: 53, name: 'Kitchenette'},
+				{id: 67, name: 'Crib available'},
+				{id: 7, name: 'Shower'},
+				{id: 8, name: 'Non-smoking'},
+			],
+			checkin: '',
+			checkout: '',
+			adult: 1,
+			child: 1,
+			room: 0,
+			select: false
+		},
+		{
+			name: 'Premium',
+			options: [
+				{id: 53, name: 'Kitchenette'},
+				{id: 16, name: 'Mini bar'},
+				{id: 57, name: 'Jacuzzi'},
+				{id: 4, name: 'TV'},
+				{id: 132, name: 'Smoking room'},
+				{id: 33, name: 'Balcony'},
+				{id: 11, name: 'Air condition'},
+				{id: 133, name: 'Wi-fi in room'},
+			],
+			checkin: '',
+			checkout: '',
+			adult: 1,
+			room: 0,
+			select: false
+		},
+	];
+
+	$scope.select = function(o) {
+		o.select = !o.select;
+	}
+
+	$scope.search = function() {
+		console.log('search');
+
+		$scope.getHotels();
+
+		$('html,body').animate({
+          scrollTop: $('.results').offset().top
+        }, 500);
+	}
+
+	$scope.datepick = function() {
+		$('.datepick').datepicker({
+          onSelect: function () {
+            console.log($(this).val())
+            $(this).parent().addClass('is-dirty')
+          }
+        });
+	}
+
+	////////////////
+
+	$scope.results = [
+		{
+			url: 'http://hotelglobo.com/wp-content/uploads/2013/11/globo-0119.jpg',
+			templateName: 'Comfort',
+			stars: [1,2,3,4],
+			relevation: 88,
+			listOptions: [
+				'1 person',
+				'double bed',
+				'kitchen',
+				'shower',
+				'suspend',
+				'wi-fi',
+				'test 1',
+				'test 2',
+				'test 3',
+				'test 4',
+				'test 5',
+				'test 6',
+				'test 7',
+				'test 8',
+			],
+			ratinglist: [
+				'Available Rooms: 4',
+				'Rating: 70%',
+				'Optimal Distance: 200m',
+				'Price: 299$',
+			],
+
+		},
+		{
+			url: 'https://texasstation.sclv.com/~/media/Images/Page%20Background%20Images/Texas/TS_Hotel_King_lowrez.jpg?h=630&w=1080',
+			templateName: 'Comfort',
+			stars: [1,2,3,4],
+			relevation: 74,
+			listOptions: [
+				'1 person',
+				'double bed',
+				'kitchen',
+				'shower',
+				'suspend',
+				'wi-fi',
+				'test 1',
+				'test 2',
+				'test 3',
+				'test 4',
+				'test 5',
+				'test 6',
+				'test 7',
+				'test 8',
+			],
+			ratinglist: [
+				'Available Rooms: 4',
+				'Rating: 70%',
+				'Optimal Distance: 200m',
+				'Price: 299$',
+			],
+
+		},
+	];
+
+	$scope.setRelevation = function(el, percent) {
+		document.querySelector(el).addEventListener('mdl-componentupgraded', function() {
+			this.MaterialProgress.setProgress(percent);
+		});
+	}
+
+	////////////////
 
 	$scope.dict = {};
 
@@ -49,6 +197,30 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		});
 	}
 
+	$scope.showLoadingProgress = function(){
+		jQuery('.c-request-progress').removeClass('c-hidden');
+	}
+
+	$scope.hideLoadingProgress = function(){
+		jQuery('.c-request-progress').addClass('c-hidden');
+	}
+
+	$scope.restApiHotelLook = function(params, callback, callback2) {
+		rmService.restApiHotelLook(params
+			, function(data){
+				if (callback){
+					$scope.hideLoadingProgress();
+					callback(data);
+				}
+			}
+			, function(){
+				if (callback2){
+					callback2();
+				}
+			});
+		$scope.showLoadingProgress();
+	};
+
 	$scope.getHotels = function() {
 
 		console.log("client:getHotels");
@@ -63,7 +235,7 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		params.lookFor = "hotel";
 		params.limit = "10";
 
-		rmService.restApiHotelLook(params, function(data){
+		$scope.restApiHotelLook(params, function(data){
 			$scope.data.hotels = data.results.hotels;
 
 			if (!$scope.data.hotels)
@@ -158,7 +330,7 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		params.adultsCount = "1";
 		params.waitForResult = "1";
 
-		rmService.restApiHotelLook(params, function(data){
+		$scope.restApiHotelLook(params, function(data){
 			console.log(data);
 			if (data.result){
 				var hotelInfo = data.result.length > 0 ? data.result[0] : null;
@@ -179,7 +351,7 @@ app.controller('mainCtrl', function ($scope, rmService) {
 	}
 
 	$scope.init();
-})
+});
 
 app.controller('templateCtrl', function ($scope) {
 	$scope.templates = [
@@ -256,6 +428,16 @@ app.controller('templateCtrl', function ($scope) {
         });
 	}
 });
+
+// app.directive('backImg', function(){
+//     return function($scope, element, attrs){
+//         var url = attrs.backImg;
+//         element.css({
+//             'background-image': 'url(' + url +')',
+//             'background-size' : 'cover'
+//         });
+//     };
+// });​
 
 app.controller('resultCtrl', function ($scope) {
 	$scope.results = [
