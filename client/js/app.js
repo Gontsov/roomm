@@ -32,6 +32,30 @@ app.service('rmService', function ($http) {
 	};
 });
 
+app.filter('orderObjectBy', function(){
+    return function(input, attribute, reverse) {
+        if (!input)
+            return input;
+        if (!angular.isObject(input))
+            return input;
+
+        var array = [];
+        for(var objectKey in input) {
+            array.push(input[objectKey]);
+        }
+
+        array.sort(function(a, b){
+                    a = parseInt(a[attribute]);
+                    b = parseInt(b[attribute]);
+                    if (reverse)
+                        return b - a;
+                    else
+                        return a - b;
+                });
+        return array;
+    }
+});
+
 app.controller('mainCtrl', function ($scope, rmService, $window) {
 
 	////////////////
@@ -95,7 +119,7 @@ app.controller('mainCtrl', function ($scope, rmService, $window) {
 
 	$scope.search = function() {
 		console.log('search');
-		
+
 		$scope.data.hotels = [];
 		$scope.data.hotelInfo = {};
 
@@ -366,6 +390,8 @@ app.controller('mainCtrl', function ($scope, rmService, $window) {
 						}
 						hotelInfo.Room = room;
 						hotelInfo.AvaTotal = availableCountTotal;
+
+						hotelInfo.Rel = $scope.getRelevation( $scope.getSelectedTemplate().options, hotelInfo );
 					}
 
 					if (hotelInfo.AvaTotal > 0){
@@ -443,11 +469,12 @@ app.controller('mainCtrl', function ($scope, rmService, $window) {
 	$scope.setRelevation = function(el, percent) {
 		console.log('percent', percent);
 		console.log('el', el);
-		console.log( document.querySelector(el) )
-		document.querySelector(el).addEventListener('mdl-componentupgraded', function() {
-			this.MaterialProgress.setProgress(percent);
-		});
+		// console.log( document.querySelector(el) )
+		// document.querySelector(el).addEventListener('mdl-componentupgraded', function() {
+		// 	this.MaterialProgress.setProgress(percent);
+		// });
 	}
+
 });
 
 app.controller('templateCtrl', function ($scope) {
@@ -526,15 +553,6 @@ app.controller('templateCtrl', function ($scope) {
 	}
 });
 
-// app.directive('backImg', function(){
-//     return function($scope, element, attrs){
-//         var url = attrs.backImg;
-//         element.css({
-//             'background-image': 'url(' + url +')',
-//             'background-size' : 'cover'
-//         });
-//     };
-// });​
 
 app.controller('resultCtrl', function ($scope) {
 	$scope.results = [

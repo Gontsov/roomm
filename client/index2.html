@@ -157,7 +157,7 @@
             </div> -->
 
             <!-- result card -->
-            <div class="" ng-repeat="hotel in data.hotelInfo">
+            <div class="" ng-repeat="hotel in data.hotelInfo | orderObjectBy:'Rel':true">
             <div class="roommade-card mdl-shadow--2dp"> <!-- // ng-repeat="room in hotel.rooms" -->
 
               <div class="roommade-card-img" ng-style="{'background-image':'url(http://cdn.photo.hotellook.com/image_v2/crop/h' + hotel.id + '_1/340/300.jpg)'}"></div>
@@ -182,11 +182,12 @@
                       <td>
                         Relevation
                       </td>
-                      <td>
-                        <div id="p{{hotel.id}}" class="mdl-progress mdl-js-progress"></div>
-                        <!-- {{ setRelevation('#p'+ hotel.id, 30 ) }} --> <!-- getRelevation( getSelectedTemplate().options, hotel.amenities ) -->
-                      </td>
-                      <td>{{ getRelevation( getSelectedTemplate().options, hotel ) }}%</td>
+<!--                       <td>
+                        <div id="p{{hotel.id}}" class="mdl-progress mdl-js-progress"></div> -->
+                        <!-- {{ setRelevation('#p'+ hotel.id, 30 ) }} --> <!-- getRelevation( getSelectedTemplate().options, hotel.amenities )
+                      </td> -->
+                      <!-- <td>{{ getRelevation( getSelectedTemplate().options, hotel ) }}%</td> -->
+                      <td>{{ hotel.Rel }}%</td>
                     </tr>
                   </table>
                   <div>

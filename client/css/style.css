@@ -343,7 +343,8 @@ header .mdl-textfield__input {
   padding-top: 0;
 }
 .roommade-card-body .mdl-card__supporting-text td {
-  font-size: 16px
+  font-size: 22px;
+  color: #3E4E49;
 }
 .roommade-card-body .mdl-progress>.progressbar {
   background-color: rgb(29, 158, 116);
