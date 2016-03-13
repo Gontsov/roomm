@@ -203,7 +203,7 @@ header .mdl-textfield__input {
 .mdl-card__actions .mdl-textfield {
   width: auto;
 }
-.mdl-card__actions .mdl-textfield:first-child {
+.mdl-card__actions .mdl-textfield:nth-child(odd) {
   margin-right: 24px;
 }
 .room-number {

@@ -184,34 +184,55 @@ app.controller('mainCtrl', function ($scope, rmService) {
 app.controller('templateCtrl', function ($scope) {
 	$scope.templates = [
 		{
-			name: 'Basic',
+			name: 'Individual',
 			options: [
-				'1 person',
-				'double bed',
-				'kitchen',
-				'shower',
-				'suspend',
-				'wi-fi',
+				{id: 11, name: 'Air condition'},
+				{id: 4, name: 'TV'},
+				{id: 66, name: 'Refrigerator'},
+				{id: 133, name: 'Wi-fi in room'},
+				{id: 5, name: 'Telephone'},
+				{id: 7, name: 'Shower'},
 			],
-			checkin: '10/10/2015',
-			checkout: '30/10/2015',
-			room: 4,
+			checkin: '',
+			checkout: '',
+			adult: 2,
+			room: 0,
 			select: false
 		},
 		{
 			name: 'Family',
 			options: [
-				'3 person',
-				'triple bed',
-				'kitchen',
-				'shower',
-				'suspend',
+				{id: 11, name: 'Air condition'},
+				{id: 53, name: 'Kitchenette'},
+				{id: 67, name: 'Crib available'},
+				{id: 7, name: 'Shower'},
+				{id: 8, name: 'Non-smoking'},
 			],
-			checkin: '10/10/2015',
-			checkout: '30/10/2015',
-			room: 2,
+			checkin: '',
+			checkout: '',
+			adult: 1,
+			child: 1,
+			room: 0,
 			select: false
-		}
+		},
+		{
+			name: 'Premium',
+			options: [
+				{id: 53, name: 'Kitchenette'},
+				{id: 16, name: 'Mini bar'},
+				{id: 57, name: 'Jacuzzi'},
+				{id: 4, name: 'TV'},
+				{id: 132, name: 'Smoking room'},
+				{id: 33, name: 'Balcony'},
+				{id: 11, name: 'Air condition'},
+				{id: 133, name: 'Wi-fi in room'},
+			],
+			checkin: '',
+			checkout: '',
+			adult: 1,
+			room: 0,
+			select: false
+		},
 	];
 
 	$scope.select = function(o) {
