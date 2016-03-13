@@ -200,26 +200,26 @@
                 </div>
 
                 <div class="list-options">
-                  <ul class="mdl-list">
-                    <li class="mdl-list__item ng-scope" ng-repeat="(key, value) in room.options">
+                  <ul class="mdl-list" ng-repeat="template in templates">
+                    <li class="mdl-list__item ng-scope" ng-if="template.select" ng-repeat="option in template.options">
                       <span class="mdl-list__item-primary-content ng-binding">
-                        <i class="material-icons mdl-list__item-icon" ng-if="value">done</i>
-                        <i class="material-icons mdl-list__item-icon is-icon-false" ng-if="!value">block</i>
-                        {{key}}
+                        <i class="material-icons mdl-list__item-icon" ng-if="compareOption(option.id, hotel.amenities)">done</i>
+                        <i class="material-icons mdl-list__item-icon is-icon-false" ng-if="!compareOption(option.id, hotel.amenities)">block</i>
+                        {{option.name}}
                       </span>
                     </li>
                   </ul>
                 </div>
 
-                <div class="rating-list">
+<!--                 <div class="rating-list">
                   <ul class="mdl-list">
-                    <li class="mdl-list__item ng-scope" ng-repeat="option in result.ratinglist">
+                    <li class="mdl-list__item ng-scope" ng-repeat="amenitiy in hotel.amenitiesInfo">
                       <span class="mdl-list__item-primary-content ng-binding">
-                        {{option}}
+                        {{amenitiy.name}}
                       </span>
                     </li>
                   </ul>  
-                </div>
+                </div> -->
 
               </div>
 

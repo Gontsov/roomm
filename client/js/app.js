@@ -344,6 +344,7 @@ app.controller('mainCtrl', function ($scope, rmService) {
 							hotelInfo.amenitiesInfo[aItem] = $scope.searchAmenityName(aItem);
 						}
 					}
+
 					$scope.data.hotelInfo[hotelInfo.id] = hotelInfo;
 				}
 			}
@@ -352,22 +353,17 @@ app.controller('mainCtrl', function ($scope, rmService) {
 
 	$scope.init();
 
-	// $scope.data.hotelInfo = [
-	// 	{
-	// 		name: 'Hotel name',
-	// 		rooms: [
-	// 			{
-	// 				desc: 'Room desc',
-	// 				options: {
-	// 					"option room 1": true,
-	// 					"option room 2": false,
-	// 				}
-	// 			}
-	// 		]
-
-	// 	}
-	// ]
-	// data.hotelInfo = [] -> { rooms = [] } -> { desc = '' }
+	// Сравнивает опции шаблона с полученными
+	$scope.compareOption = function (id, arr) {
+		var valid = false;
+		for (var i = 0; i < arr.length; i++){
+			if( arr[i] === id ) {
+				valid = true;
+				break;
+			}
+		}
+		return valid;
+	}
 
 });
 
