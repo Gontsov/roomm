@@ -190,7 +190,7 @@ header .mdl-textfield__input {
 .search-templates .mdl-card__supporting-text {
   width: auto;
   overflow-y: auto;
-  height: 400px;
+  height: 330px;
 }
 
 .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
