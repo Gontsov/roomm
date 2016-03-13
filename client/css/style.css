@@ -434,9 +434,9 @@ header .mdl-textfield__input {
   margin-top: 2%;
   margin-bottom: 2%;
   background-color: #fff;
-  height: 590px;
+  height: 620px;
   top: 50%;
-  margin-top: -295px;
+  margin-top: -325px;
 }
 .create-template-popup > div > p {
   margin: 0;
@@ -455,6 +455,10 @@ header .mdl-textfield__input {
   border-radius: 12px;
   height: 56px;
   padding: 0 56px;
+}
+.create-template-popup .mdl-list__item {
+  width: 33%;
+  float: left;
 }
 
 
