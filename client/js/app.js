@@ -230,7 +230,7 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		
 		//params.query = "55.728751,37.643944";
 		// params.query = "55.777688,37.586643";
-		
+
 		params.query = $scope.location;
 
 		params.lang = "ru";
@@ -383,6 +383,16 @@ app.controller('mainCtrl', function ($scope, rmService) {
 		return valid;
 	}
 
+	$scope.getSelectedTemplate = function () {
+		var template;
+		for(var i = 0; i < $scope.templates.length; i++) {
+			if( $scope.templates[i].select ) template = $scope.templates[i];
+		}
+		return template;
+	}
+	$scope.getStars = function(num) {
+	    return new Array(num);   
+	}
 });
 
 app.controller('templateCtrl', function ($scope) {

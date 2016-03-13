@@ -333,7 +333,7 @@ header .mdl-textfield__input {
   width: calc(100% - 300px);
 }
 .roommade-card-body .mdl-card__title-text {
-  width: 90%;
+  max-width: 70%;
 }
 .roommade-card-body .mdl-card__title button {
   /*margin-left: 20px;*/
@@ -353,6 +353,7 @@ header .mdl-textfield__input {
 }
 .hotel-rating {
   margin-left: 15px;
+  width: 130px;
 }
 .mdl-progress {
   width: 150px;

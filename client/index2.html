@@ -158,18 +158,18 @@
 
             <!-- result card -->
             <div class="" ng-repeat="hotel in data.hotelInfo">
-            <div class="roommade-card mdl-shadow--2dp" ng-repeat="room in hotel.rooms">
+            <div class="roommade-card mdl-shadow--2dp"> <!-- // ng-repeat="room in hotel.rooms" -->
 
               <div class="roommade-card-img" ng-style="{'background-image':'url(http://cdn.photo.hotellook.com/image_v2/crop/h' + hotel.id + '_1/340/300.jpg)'}"></div>
 
               <div class="roommade-card-body">
                 <div class="mdl-card__title">
                 <!-- {{result.templateName}} -->
-                  <h2 class="mdl-card__title-text"> {{room.desc}} in {{hotel.name}}</h2>
+                  <h2 class="mdl-card__title-text"> {{ getSelectedTemplate().name }} room in {{hotel.name}}</h2>
 
                   <!-- hotel rating -->
                   <div class="hotel-rating">
-                    <i class="material-icons" ng-repeat="star in hotel.stars">star</i>
+                    <i class="material-icons" ng-repeat="star in getStars(hotel.stars) track by $index">star</i>
                   </div>
 
                   <!-- button -->
@@ -213,19 +213,14 @@
 
                 <div class="rating-list">
                   <ul class="mdl-list">
-<!--                     <li class="mdl-list__item ng-scope" ng-repeat="amenitiy in hotel.amenitiesInfo">
-                      <span class="mdl-list__item-primary-content ng-binding">
-                        {{amenitiy.name}}
-                      </span>
-                    </li> -->
                     <li class="mdl-list__item ng-scope">
                       <span class="mdl-list__item-primary-content ng-binding">
-                        Available rooms: {{ (room.option.available) ? room.option.available : 0 }}
+                        Available rooms: {{hotel.AvaTotal}}
                       </span>
                     </li>
                     <li class="mdl-list__item ng-scope">
                       <span class="mdl-list__item-primary-content ng-binding">
-                        Price: ${{room.price}}
+                        Stay price: ${{hotel.minPriceTotal}}
                       </span>
                     </li>
                   </ul>  
